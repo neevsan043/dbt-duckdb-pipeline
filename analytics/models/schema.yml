@@ -49,3 +49,18 @@ models:
         description: Posting location; the grain.
       - name: postings
         description: Postings counted for the location.
+  - name: monthly_summary
+    description: Contains list of jobs that are remote yearly along with total number of postings and percentage of remote postings.
+    config:
+      persist_docs:
+        relation: true
+        columns: true
+    columns:
+      - name: month
+        description: Posting month, truncated from the search_date.
+      - name: total_postings
+        description: Total jobs posted globally year wise.
+      - name: remote_postings
+        description: Job postings that are remote, grouped yearly.
+      - name: pct_remote
+        description: Percentage of remote jobs by overall jobs posted yearly, grouped by year.
