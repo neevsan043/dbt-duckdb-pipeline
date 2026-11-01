@@ -2,9 +2,6 @@ name: dbt build & publish
 on:
   push:
     branches: [main]
-    paths:
-      - 'project_1/**'
-      - '.github/workflows/dbt_build.yml'
   schedule:
     - cron: '17 6 * * 1'    # Mondays — the pipeline runs while you sleep
   workflow_dispatch:        # …and a manual Run button
