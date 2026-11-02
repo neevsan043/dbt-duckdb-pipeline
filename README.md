@@ -15,7 +15,7 @@ A public dbt + DuckDB pipeline over ~692k real job postings, rebuilt and republi
 | --- | --- | --- |
 | **dbt pipeline** | sources → cleaned model → insight marts | [`analytics/models/`](analytics/models/) |
 | **Data tests** | `unique` / `not_null` on every mart grain | [`schema.yml`](analytics/models/schema.yml) |
-| **Hosted dbt docs** | lineage, descriptions, column tests | [Live docs site](https://lukebarousse.github.io/dbt_Analytics_Engineering_Course/project1/) |
+| **Hosted dbt docs** | lineage, descriptions, column tests | [Live docs site](https://neevsan043.github.io/dbt-duckdb-pipeline/) |
 | **Public CI** | build + test + publish on every push | [Actions workflow](https://github.com/neevsan043/dbt-duckdb-pipeline/actions/workflows/dbt_build.yml) |
 | **Environments** | local `dev` vs CI `prod` targets | [`analytics/ci/profiles.yml`](analytics/ci/profiles.yml) |
 | **Published warehouse** | one `ATTACH`, queryable by anyone | [Query it](#query-the-published-warehouse) |
@@ -71,7 +71,7 @@ No clone required. [Install DuckDB](https://duckdb.org/docs/installation/) (`bre
 INSTALL httpfs;
 LOAD httpfs;
 
-ATTACH 'https://lukeb.co/dbt-warehouse' AS jobs;
+ATTACH 'https://github.com/neevsan043/dbt-duckdb-pipeline/releases/download/warehouse/prod.duckdb' AS jobs;
 USE jobs;
 SHOW TABLES;
 
@@ -80,7 +80,7 @@ SELECT * FROM monthly_summary;
 ```
 
 > The short link is just a convenience — the database itself lives at the release asset URL, which works in `ATTACH` directly (use this form in your own README):
-> `https://github.com/lukebarousse/dbt_Analytics_Engineering_Course/releases/download/warehouse/prod.duckdb`
+> `https://github.com/neevsan043/dbt-duckdb-pipeline/releases/download/warehouse/prod.duckdb`
 
 ---
 
@@ -88,7 +88,7 @@ SELECT * FROM monthly_summary;
 
 Docs are generated with `dbt docs generate` and published to GitHub Pages:
 
-**→ [lukebarousse.github.io/dbt_Analytics_Engineering_Course/project1/](https://lukebarousse.github.io/dbt_Analytics_Engineering_Course/project1/)**
+**→ [neevsan043.github.io/dbt-duckdb-pipeline](https://neevsan043.github.io/dbt-duckdb-pipeline/)**
 
 The site shows:
 
@@ -131,4 +131,3 @@ uv run dbt docs serve
 
 ---
 
-*Reference build for Project #1 of the [dbt for Data Analytics & Engineering course](https://www.lukebarousse.com) (lessons 1.01–2.02) — students build this repo themselves and compare against this version. Dataset: real job postings scraped daily.*
